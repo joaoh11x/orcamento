@@ -168,10 +168,11 @@
 
     <div class="informacoes-representante">
         <p>Duartina, <?php
-        setlocale(LC_TIME, 'pt_BR.utf8', 'portuguese');
-
+        $formatter = new IntlDateFormatter('pt_BR', IntlDateFormatter::LONG, IntlDateFormatter::NONE);
+        // Converte a data enviada para timestamp
         $data = strtotime($_POST['data']);
-        echo strftime("%d de %B de %Y", $data); // Exibe a data por extenso
+        // Exibe a data por extenso no formato "dia de mês de ano"
+        echo $formatter->format($data);
         ?></p>
         <hr>
     </div>
